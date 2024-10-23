@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de productos</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>SEGUNDO PARCIAL TEM-742</td>
+        </tr>
+        <tr>
+            <td>Nombre: Wilmer Quispe Balboa</td>
+        </tr>
+        <tr>
+            <td>Carnet: 13631533</td>
+        </tr>
+    </table>
+
+
+    <h1>Gestión de productos</h1>
+    <a href="{{ url_for('nuevo') }}">Nuevo producto</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha de vencimiento</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.fecha_vencimiento }}</td>
+            <td>{{ producto.categoria }}</td>
+            <td>
+                <a href="{{ url_for('editar', id_producto=producto.id) }}">Editar</a>
+                <a href="{{ url_for('eliminar_producto', id_producto=producto.id) }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
